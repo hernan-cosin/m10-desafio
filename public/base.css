@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+:root {
+    --black: #000;
+    --white: #fff;
+    --grey-25: rgb(175, 175, 175);
+    --grey-50: rgb(126, 126, 126);
+    --grey-100: rgb(80, 80, 80);
+    --red: #f00;
+    --border-radius: 4px;
+    --max-width: 1280px;
+    --dark-blue: #041427;
+    --yellow: #DBFF00;
+    --button-white: #fff;
+    --button-yellow: #DBFF00;
+    --button-blue: #041427;
+}
