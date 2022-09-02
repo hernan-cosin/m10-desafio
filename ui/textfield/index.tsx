@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import {Tiny} from "ui/typography"
-import { useForm } from "react-hook-form";
 
 export const Input = styled.input.attrs(props=>({
     type: props.type,
@@ -11,10 +10,17 @@ export const Input = styled.input.attrs(props=>({
     border: 2px solid var(--black);
     border-radius: 4px;
     padding: 0 0 0 10px;
-
+    
     &.input {
         display: block;
         margin: 25px auto 0 auto;
+    }
+    
+    &.header-searcher {
+        border: 2px solid var(--white);
+        background-color: var(--blue);
+        color: var(--white);
+        font-size: 14px;
     }
 `
 

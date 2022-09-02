@@ -6,6 +6,7 @@ export const ProductCardContainer = styled.div`
   border-radius: 4px;
   background-color: var(--grey-25);
   box-shadow: 0px 2px 4px var(--black);
+  cursor: pointer;
 `;
 export const ProductInfoContainer = styled.div`
   display: flex;

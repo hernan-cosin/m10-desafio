@@ -9,9 +9,17 @@ export const Title = styled.h1.attrs(props=>({
     padding: 0;
     overflow-wrap: break-word;
 
-    &.title {
+    &.homepage-title {
         text-align: center;
-        margin: 25px 0 0 0;
+    }
+
+    &.homepage-featured-title {
+        text-align: center;
+        margin: 0px 0 35px 0;
+    }
+
+    &.card-item-price {
+        align-self: flex-end;
     }
     `
 

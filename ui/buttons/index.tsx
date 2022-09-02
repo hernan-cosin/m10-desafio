@@ -39,4 +39,7 @@ export const Button = styled("button")<ButtonProps>`
         margin: 20px 0 0 0;
     }
 
+    &.card-item-price {
+        align-self: center;
+    }
 `

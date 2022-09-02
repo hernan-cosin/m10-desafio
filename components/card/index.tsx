@@ -5,10 +5,17 @@ import {
     ProductInfoContainer,
     ProductInformation
 } from "./styled";
+import {useRouter} from "next/router"
 
-export const ProductCard = ({ title, price, imgUrl }: any) => {
+export const ProductCard = ({ title, price, imgUrl, objectID }: any) => {
+  const router = useRouter()
+  
+  function handleItemClick() {
+    router.push("/item/" + objectID)
+  }
+
   return (
-    <ProductCardContainer>
+    <ProductCardContainer onClick={handleItemClick}>
       <Image
         src={imgUrl}
         layout="responsive"

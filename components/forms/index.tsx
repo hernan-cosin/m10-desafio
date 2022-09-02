@@ -45,7 +45,7 @@ export const Form = ()=>{
 
 export const SigninEmailForm = ({onSubmit}:any)=>{
     return <SigninFormContainer onSubmit={onSubmit}>
-        <TextField label="email" name="email" type="email" placeholder="tu_email@gmail.com"></TextField>
+        <TextField label="Email" name="email" type="email" placeholder="tu_email@gmail.com"></TextField>
         <Button backgroundColor="blue" className="signin-email-form ">Continuar</Button>
     </SigninFormContainer>
 }

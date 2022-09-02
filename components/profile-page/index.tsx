@@ -10,7 +10,7 @@ export function ProfilePage() {
     <ProfileContainer>
       <ProfileContent>
           <Subtitle>Perfil</Subtitle>
-
+          
       </ProfileContent>
     </ProfileContainer>
   );

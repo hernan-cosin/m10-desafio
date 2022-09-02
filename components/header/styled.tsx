@@ -24,11 +24,35 @@ export const Content = styled.div`
 `
 const HeaderSearcherForm = styled.form`
     display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    @media (min-width: 850px) {
+        flex-direction: row;
+        column-gap: 5px;
+    }
+`
+
+
+export const LogoContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+`
+
+export const SearcherContainer = styled.div`
+    @media (min-width: 850px) {
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        }
 `
 
 export function HeaderSearcher() {
     return <HeaderSearcherForm>
-        <Input />
-        <Button backgroundColor="yellow">Buscar</Button>
+        <Input  className="header-searcher" placeholder="Hamburguesas" />
+        <Button backgroundColor="white">Buscar</Button>
     </HeaderSearcherForm>
 }
