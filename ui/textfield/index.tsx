@@ -11,7 +11,7 @@ export const Input = styled.input.attrs(props=>({
     border-radius: 4px;
     padding: 0 0 0 10px;
     
-    &.input {
+    &.header-input {
         display: block;
         margin: 25px auto 0 auto;
     }
@@ -27,9 +27,9 @@ export const Input = styled.input.attrs(props=>({
 export const Label = styled(Tiny)`
 
 `
-export function TextField({label, name, placeholder, type}:any) {
+export function TextField({label, name, placeholder, type, defaultValue} :any) {
 
     return <Label as="label">{label}
-        <Input type={type} name={name} placeholder={placeholder} />
+        <Input type={type} name={name} placeholder={placeholder} defaultValue={defaultValue}/>
     </Label>
 }

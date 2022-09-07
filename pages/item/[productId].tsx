@@ -4,8 +4,6 @@ import {ItemPage} from "components/item-page"
 import { useRouter } from 'next/router'
 
 const Item: NextPage = ({itemInfo}: any) => {
-  // console.log("itemInfo", itemInfo)
-
   return <Layout>
     <ItemPage itemInfo={itemInfo}/>
   </Layout>
@@ -23,12 +21,12 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: any) {
   const { productId } = context.params
 
-  const productsIds = await fetch("http://localhost:3001/api/products/" + productId)
-  const productsIdsRes =  await productsIds.json()
+  const res = await fetch("https://dwf-m9-desafio-backend-ecommerce.vercel.app/api/products/" + productId)
+  const productInformation =  await res.json()
 
 return {
   // Passed to the page component as props
-  props: { itemInfo: productsIdsRes },
+  props: { itemInfo: productInformation },
   revalidate: 10,
 }
 }

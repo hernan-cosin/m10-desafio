@@ -30,16 +30,16 @@ export function Footer() {
     return <FooterContainer>
         <FooterContent>
             <FooterMenu>
-                <Link href="/">
+                <Link href="/signin">
                     <Body color="white" as="a" link>Ingresar</Body>
                 </Link>
-                <Link href="/">
+                <Link href="/profile">
                     <Body color="white" as="a" link>Mi perfil</Body>
                 </Link>
                 <Link href="/search">
                     <Body color="white" as="a" link>Buscar</Body>
                 </Link>
-                <Link href="/">
+                <Link href="/logout">
                     <Body color="white" as="a" link>Logout</Body>
                 </Link>
             </FooterMenu>

@@ -6,7 +6,6 @@ import {SigninPage} from "components/signin-page"
 const Signin: NextPage = () => {
   return <Layout>
     <SigninPage/>
-
   </Layout>
 }
 

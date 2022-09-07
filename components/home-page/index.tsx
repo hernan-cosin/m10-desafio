@@ -1,4 +1,4 @@
-import { ProductCard } from "components/card";
+import { ProductCard } from "components/productCard";
 import { useFeaturedProducts } from "lib/hooks";
 import { Button } from "ui/buttons";
 import { Input } from "ui/textfield";
@@ -6,21 +6,32 @@ import { Title } from "ui/typography";
 import {
   FeaturedContainer,
   FeaturedContent, WelcomeContainer,
-  WelcomeContent
+  WelcomeContent, HomeSearchForm
 } from "./styled";
+import { useRouter } from "next/router"
 
 export function HomePage() {
   const featuredProducts = useFeaturedProducts()
+  const router = useRouter()
+
+  function handleHomeSearchSubmit(e:any) {
+    e.preventDefault()
+    const q = e.target["home-search-input"].value
+
+    router.push("/search?q=" + q + "&page=0&hitsPerPage=5")
+  }
 
   return (
     <>
       <WelcomeContainer>
         <WelcomeContent>
           <Title className={"homepage-title"}>El mejor e-commerce</Title>
-          <Input className={"input"} placeholder="Milanesas" />
-          <Button backgroundColor="blue" className="search-button">
+          <HomeSearchForm onSubmit={handleHomeSearchSubmit}>
+            <Input className={"header-input"} name="home-search-input" placeholder="Milanesas" />
+            <Button backgroundColor="blue" className="search-button">
             Buscar
-          </Button>
+            </Button>
+          </HomeSearchForm>
         </WelcomeContent>
       </WelcomeContainer>
       <FeaturedContainer>

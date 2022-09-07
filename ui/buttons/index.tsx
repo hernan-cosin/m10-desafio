@@ -3,7 +3,8 @@ import styled from "styled-components"
 interface ButtonProps {
     backgroundColor: string;
     color?: string;
-    className?: string
+    className?: string;
+    disabled?: boolean;
 }
 
 export const Button = styled("button")<ButtonProps>`
@@ -16,7 +17,9 @@ export const Button = styled("button")<ButtonProps>`
     border: none;
     background-color:${props => "var(--button-" + props.backgroundColor + ")"};
     color: ${props =>  props.backgroundColor == "blue"? "var(--white)" : "black"};
-    cursor: pointer;
+    cursor: ${props => props.disabled ? "default" : "pointer"};
+    pointer-events: ${props => props.disabled ? "none" : "all"};
+    opacity: ${props => props.disabled ? ".35" : "1"};
 
     &.search-button {
        display: block;
@@ -41,5 +44,10 @@ export const Button = styled("button")<ButtonProps>`
 
     &.card-item-price {
         align-self: center;
+    }
+
+    &.search-see-more {
+        margin: 0 auto;
+        display: block;
     }
 `

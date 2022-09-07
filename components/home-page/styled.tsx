@@ -35,4 +35,5 @@ export const FeaturedContent = styled.div`
         row-gap: 30px;
     }
 `
-
+export const HomeSearchForm = styled.form`
+`

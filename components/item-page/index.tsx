@@ -1,12 +1,16 @@
-import { ItemCard, ItemContainer, ItemContent } from "./styled";
+import { ItemContainer, ItemContent } from "./styled";
+import { ItemCard } from "components/itemCard";
 
 export function ItemPage({ itemInfo }: any) {
+  
   const imgUrl = itemInfo?.Attachments[0].url;
   const title = itemInfo?.Title;
   const price = itemInfo?.Price
   const quantity = itemInfo?.Quantity 
   const description = itemInfo?.Description
   const flavors =  getFlavors(itemInfo)
+  const objectID = itemInfo?.objectID
+  // console.log(objectID);
 
   return (
     <ItemContainer>
@@ -19,6 +23,7 @@ export function ItemPage({ itemInfo }: any) {
           description={description}
           price={price}
           flavors={flavors}
+          objectID={objectID}
         />
       </ItemContent>
     </ItemContainer>

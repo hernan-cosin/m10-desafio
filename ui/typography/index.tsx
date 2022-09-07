@@ -36,6 +36,10 @@ export const Subtitle = styled(Title).attrs({as: "h2"})<SubtitleTextProp>`
     color: ${props => props.color};
     cursor: ${props => props.link? "pointer" : "default"};
     width: ${props => props.link? "fit-content" : "initial"};
+
+    &.profile-title {
+        text-align: center;
+    }
     `
 
 interface LargeTextProp {
@@ -58,6 +62,19 @@ export const LargeText = styled.p<LargeTextProp>`
         
         &.social-footer {
             display: block;
+        }
+
+        &.search-page-message {
+            text-align: center;
+        }
+
+        &.search-subtitle {
+            text-align: center;
+            margin: 0 0 25px 0;
+            
+            @media (min-width: 600px) {
+                text-align: left;
+            }
         }
         `
 
@@ -87,4 +104,8 @@ export const Tiny = styled(LargeText)`
 `
 export function BodyButton({children, color, onClick}: any){
     return <Body color={color} onClick={onClick} link>{children}</Body>
+}
+
+export function PageNumber({children, color, onClick}: any) {
+    return <LargeText color={color} onClick={onClick} link>{children}</LargeText>
 }

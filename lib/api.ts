@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:3001/api";
+// const BASE_URL = "http://localhost:3001/api";
+const BASE_URL = "https://dwf-m9-desafio-backend-ecommerce.vercel.app";
 
 export async function fetchAPI(input: RequestInfo, options:any) {
     const url = BASE_URL + input;
@@ -53,4 +54,41 @@ export function saveToken(token: string) {
 
 export function getSavedToken() {
     return localStorage.getItem("auth_token")
+}
+
+export async function searchProducts(query: string, page?: number, hitsPerPage?: number) {
+    const pageParam = page? "&page=" + page : ""
+    const hitsPerPageParam = hitsPerPage? "&hitsPerPage=" + hitsPerPage : ""
+
+    const resProducts = await fetchAPI("/search?q=" + query + pageParam + hitsPerPageParam, {
+    method: "GET",
+    }) 
+
+    return resProducts
+}
+
+interface orderInfo {
+    objectID: string;
+    amount: string;
+    flavor: string[]
+}
+
+export async function generateOrder(info:orderInfo) {
+    // console.log("API", info.objectID, info.flavor, info.amount);
+    // console.log("sin json",{amount: info.amount, flavor:info.flavor})
+    // console.log("con json",)
+
+    const aditionalData = JSON.stringify({amount: info.amount, flavor: info.flavor})
+    
+    const resOrder = await fetchAPI("/order?productId=" + info.objectID, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: aditionalData,
+    })
+    
+    console.log(resOrder)
+    
+    return resOrder
 }
