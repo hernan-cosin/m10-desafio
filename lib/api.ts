@@ -1,5 +1,5 @@
-// const BASE_URL = "http://localhost:3001/api";
-const BASE_URL = "https://dwf-m9-desafio-backend-ecommerce.vercel.app/api";
+const BASE_URL = "http://localhost:3001/api";
+// const BASE_URL = "https://dwf-m9-desafio-backend-ecommerce.vercel.app/api";
 
 export async function fetchAPI(input: RequestInfo, options:any) {
     const url = BASE_URL + input;
