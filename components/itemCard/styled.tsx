@@ -106,7 +106,7 @@ export function Select({ quantity, options }: any) {
 
   return (
     <FlavorOptionContainer>
-      {options.map((o: string) => {
+      {options?.map((o: string) => {
         return (
           <FlavorOption onClick={handleMaxSelect} selected={selected} key={o}>
             {o}
