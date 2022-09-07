@@ -50,4 +50,9 @@ export const Button = styled("button")<ButtonProps>`
         margin: 0 auto;
         display: block;
     }
+
+    &.thanks-page {
+        margin: 25px auto 0 auto;
+        display: block;
+    }
 `
