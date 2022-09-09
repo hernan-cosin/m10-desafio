@@ -6,15 +6,25 @@ import { ProfileContainer, ProfileContent, ProfileForm } from "./styled";
 import { getSavedToken } from "lib/api";
 import { redirectTo } from "lib/atoms";
 import { useSetRecoilState } from "recoil";
+import { useEffect, useState } from "react";
 
 export function ProfilePage() {
   const router = useRouter();
   const setRedirectTo = useSetRecoilState(redirectTo)
   const userData = useMe();
+  const [loggedIn, setLoggedIn] = useState(false)
 
-  const inSession = getSavedToken()
+  useEffect(()=>{
+    const inSession = getSavedToken()
+    
+    if (inSession) {
+      setLoggedIn(true)
+    } else {
+      setLoggedIn(false)
+    }
+  }, [])
 
-  if (!inSession) {
+  if (!loggedIn) {
     setRedirectTo({asPath: router.asPath})
     router.push("/signin")
   }
