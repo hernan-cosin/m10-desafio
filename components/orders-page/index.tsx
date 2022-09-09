@@ -1,5 +1,5 @@
 import { useMyOrders } from "lib/hooks";
-import { Subtitle } from "ui/typography";
+import { LargeText, Subtitle } from "ui/typography";
 import {
   OrderDataContainer, Orders,
   OrdersContainer,
@@ -14,7 +14,11 @@ export function OrdersPage() {
       <OrdersContent>
         <Subtitle>Mis ordenes:</Subtitle>
         <OrderDataContainer>
-          <Orders orders={myOrders} />
+          {
+          myOrders.length == 0 ?
+          <LargeText>Aun no tienes ordenes para mostrar</LargeText> : 
+          <Orders orders={myOrders} /> 
+          }
         </OrderDataContainer>
       </OrdersContent>
     </OrdersContainer>
