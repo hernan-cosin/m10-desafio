@@ -15,7 +15,7 @@ export function OrdersPage() {
         <Subtitle>Mis ordenes:</Subtitle>
         <OrderDataContainer>
           {
-          myOrders.length == 0 ?
+          myOrders?.length == 0 ?
           <LargeText>Aun no tienes ordenes para mostrar</LargeText> : 
           <Orders orders={myOrders} /> 
           }
