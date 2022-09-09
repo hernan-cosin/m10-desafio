@@ -47,7 +47,6 @@ export const ProfileForm = ({ userData }: any) => {
     };
 
     const res = await updateUserInfo(data);
-    console.log(res);
   }
 
   return (

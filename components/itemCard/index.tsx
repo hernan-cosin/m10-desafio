@@ -41,17 +41,11 @@ export function ItemCard({
     const inSession = getSavedToken();
 
     if (inSession) {
-      // const orderRes = await generateOrder({
-      //   objectID: objectID,
-      //   amount: amount.toString(),
-      //   flavor: flavorsSelectedVal,
-      // });
       setBuyingProductInformation({
         amount: amount.toString(),
         flavor: flavorsSelectedVal
       })
       router.push("/checkout/" + objectID)
-      // window.location = orderRes.url;
     } else {
       setRedirectTo({ asPath: router.asPath }); // sets global state to redirect to same page after login
       router.push("/signin");
