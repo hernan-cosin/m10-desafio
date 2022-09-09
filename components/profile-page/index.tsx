@@ -12,22 +12,16 @@ export function ProfilePage() {
   const router = useRouter();
   const setRedirectTo = useSetRecoilState(redirectTo)
   const userData = useMe();
-  const [loggedIn, setLoggedIn] = useState(false)
-
+  
   useEffect(()=>{
     const inSession = getSavedToken()
-    
-    if (inSession) {
-      setLoggedIn(true)
-    } else {
-      setLoggedIn(false)
-    }
-  }, [])
 
-  if (!loggedIn) {
-    setRedirectTo({asPath: router.asPath})
-    router.push("/signin")
-  }
+    if (!inSession) {
+      setRedirectTo({asPath: router.asPath})
+      router.push("/signin")
+    }
+
+  }, [router, setRedirectTo])
 
   function handleOrdersButton() {
     router.push("/orders");
