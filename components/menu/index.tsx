@@ -58,6 +58,12 @@ const MenuOpen = ({ onClick }: any) => {
 const MenuClose = ({ onClick }: any) => {
   const userData = useMe();
   console.log(userData);
+  
+  const router = useRouter();
+
+  function handleLogout() {
+    router.push("/logout");
+  }
 
   return (
     <MenuCloseContainer>
@@ -94,7 +100,7 @@ const MenuClose = ({ onClick }: any) => {
       {userData?.email ? (
         <UserDataContainerClose>
           <LargeText color="white">{userData.email}</LargeText>
-          <Body color="var(--red)" link>
+          <Body color="var(--red)" onClick={handleLogout} link>
             Cerrar sesión
           </Body>
         </UserDataContainerClose>
