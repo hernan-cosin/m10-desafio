@@ -57,7 +57,6 @@ const MenuOpen = ({ onClick }: any) => {
 
 const MenuClose = ({ onClick }: any) => {
   const userData = useMe();
-  console.log(userData);
   
   const router = useRouter();
 

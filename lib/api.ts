@@ -19,7 +19,6 @@ export async function fetchAPI(input: RequestInfo, options: any) {
     newOptions.body = JSON.stringify(newOptions.body);
   }
 
-  // console.log(newOptions);
   const res = await fetch(url, newOptions);
 
   if (res.status >= 200 && res.status < 300) {
@@ -95,7 +94,6 @@ export async function generateOrder(info: orderInfo) {
     body: aditionalData,
   });
 
-  console.log(resOrder);
 
   return resOrder;
 }
