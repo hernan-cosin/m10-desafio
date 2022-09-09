@@ -2,7 +2,7 @@ import { Button } from "ui/buttons";
 import { Subtitle, Title } from "ui/typography";
 import { ThanksContainer, ThanksContent } from "./styled";
 
-export function OrdersPage() {
+export function ThanksPage() {
   return (
     <ThanksContainer>
       <ThanksContent>
