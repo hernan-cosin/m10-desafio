@@ -67,19 +67,19 @@ export const ProfileForm = ({ userData }: any) => {
         label="Calle"
         name="street"
         type="text"
-        defaultValue={userData ? userData.address?.street : ""}
+        defaultValue={userData ? userData?.street : ""}
       />
       <TextField
         label="Altura"
         name="streetNumber"
         type="number"
-        defaultValue={userData ? userData.address?.streetNumber : ""}
+        defaultValue={userData ? userData?.streetNumber : ""}
       />
       <TextField
         label="Dpto/Casa"
         name="number"
         type="text"
-        defaultValue={userData ? userData.address?.number : ""}
+        defaultValue={userData ? userData?.number : ""}
       />
       <TextField
         label="Teléfono"
