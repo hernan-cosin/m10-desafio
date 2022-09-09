@@ -46,6 +46,7 @@ interface LargeTextProp {
     readonly bold?: boolean;
     color?: string;
     link?: boolean;
+    pending?: string;
 }
 
 export const LargeText = styled.p<LargeTextProp>`

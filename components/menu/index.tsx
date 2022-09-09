@@ -6,11 +6,16 @@ import { Button } from "ui/buttons";
 import { MenuCloseIcon, MenuOpenIcon } from "ui/icons";
 import { Li, Nav } from "ui/tags";
 import { Body, BodyButton, LargeText, Subtitle } from "ui/typography";
-import { MenuCloseContainer, MenuUl, UserDataContainerClose, UserDataContainerOpen } from "./styled";
+import {
+  MenuCloseContainer,
+  MenuUl,
+  UserDataContainerClose,
+  UserDataContainerOpen,
+} from "./styled";
 
 const MenuOpen = ({ onClick }: any) => {
-  const userData = useMe()
-  
+  const userData = useMe();
+
   const router = useRouter();
 
   function handleDesktopSignin() {
@@ -18,37 +23,42 @@ const MenuOpen = ({ onClick }: any) => {
   }
 
   function handleLogout() {
-    router.push("/logout")    
+    router.push("/logout");
   }
 
   function handleUserClick() {
-    router.push("/profile")
+    router.push("/profile");
   }
 
   return (
     <Nav>
       <MenuOpenIcon onClick={onClick} />
-      {
-        userData?.email? <UserDataContainerOpen>
-            <Body onClick={handleUserClick} color="white" link>{userData.email}</Body>
-            <BodyButton color="var(--red)" onClick={handleLogout} link>Cerrar sesión</BodyButton>
-        </UserDataContainerOpen> : 
+      {userData?.email ? (
+        <UserDataContainerOpen>
+          <Body onClick={handleUserClick} color="white" link>
+            {userData.email}
+          </Body>
+          <BodyButton color="var(--red)" onClick={handleLogout} link>
+            Cerrar sesión
+          </BodyButton>
+        </UserDataContainerOpen>
+      ) : (
         <Button
-            backgroundColor="yellow"
-            className="header-menu"
-            onClick={handleDesktopSignin}
+          backgroundColor="yellow"
+          className="header-menu"
+          onClick={handleDesktopSignin}
         >
-            Ingresar
+          Ingresar
         </Button>
-      }
+      )}
     </Nav>
   );
 };
 
 const MenuClose = ({ onClick }: any) => {
-    const userData = useMe()
-    console.log(userData);
-    
+  const userData = useMe();
+  console.log(userData);
+
   return (
     <MenuCloseContainer>
       <MenuCloseIcon onClick={onClick} className="mobile"></MenuCloseIcon>
@@ -81,10 +91,16 @@ const MenuClose = ({ onClick }: any) => {
           </Link>
         </Li>
       </MenuUl>
-      {userData?.email? <UserDataContainerClose>
-        <LargeText color="white">{userData.email}</LargeText>
-        <Body color="var(--red)"link>Cerrar sesión</Body>
-      </UserDataContainerClose> : ""}
+      {userData?.email ? (
+        <UserDataContainerClose>
+          <LargeText color="white">{userData.email}</LargeText>
+          <Body color="var(--red)" link>
+            Cerrar sesión
+          </Body>
+        </UserDataContainerClose>
+      ) : (
+        ""
+      )}
     </MenuCloseContainer>
   );
 };

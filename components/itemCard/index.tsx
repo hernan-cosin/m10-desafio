@@ -1,19 +1,17 @@
+import { generateOrder, getSavedToken } from "lib/api";
+import { flavorsSelected, redirectTo, buyingProductInformation } from "lib/atoms";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Button } from "ui/buttons";
 import { Body, LargeText, Subtitle, Title } from "ui/typography";
 import {
   ImageContainer,
-  InfoContainer,
+  InfoContainerForm,
   ItemCardContainer,
   Select,
 } from "./styled";
-import { useRecoilValue } from "recoil";
-import { flavorsSelected } from "lib/atoms";
-import { useEffect, useState } from "react";
-import { generateOrder, getSavedToken } from "lib/api";
-import { useSetRecoilState } from "recoil";
-import { redirectTo } from "lib/atoms";
-import { useRouter } from "next/router";
 
 export function ItemCard({
   imgUrl,
@@ -29,7 +27,7 @@ export function ItemCard({
   const [amount, setAmount] = useState(1);
   const router = useRouter();
   const setRedirectTo = useSetRecoilState(redirectTo);
-
+  const setBuyingProductInformation = useSetRecoilState(buyingProductInformation)
   useEffect(() => {
     if (flavorsSelectedVal.length == 0) {
       setToggleDisableButton(true);
@@ -38,25 +36,25 @@ export function ItemCard({
     }
   }, [flavorsSelectedVal]);
 
-  async function handleBuyClick() {
-    // console.log({objectID,flavorsSelectedVal, amount})
-    // console.log(flavorsSelectedVal)
-    // console.log(amount)
+  async function handleSubmit(e: any) {
+    e.preventDefault();
     const inSession = getSavedToken();
-    console.log(inSession ? true : false);
 
     if (inSession) {
-      const orderRes = await generateOrder({
-        objectID: objectID,
+      // const orderRes = await generateOrder({
+      //   objectID: objectID,
+      //   amount: amount.toString(),
+      //   flavor: flavorsSelectedVal,
+      // });
+      setBuyingProductInformation({
         amount: amount.toString(),
-        flavor: flavorsSelectedVal,
-      });
-      window.location = orderRes.url;
+        flavor: flavorsSelectedVal
+      })
+      router.push("/checkout/" + objectID)
+      // window.location = orderRes.url;
     } else {
-      // console.log(router);
-
-      setRedirectTo({asPath: router.asPath})
-      router.push("/signin")
+      setRedirectTo({ asPath: router.asPath }); // sets global state to redirect to same page after login
+      router.push("/signin");
     }
   }
 
@@ -76,7 +74,7 @@ export function ItemCard({
           alt={title}
         />
       </ImageContainer>
-      <InfoContainer>
+      <InfoContainerForm onSubmit={handleSubmit}>
         <Subtitle>{title}</Subtitle>
         <LargeText>Cantidad: {quantity}</LargeText>
         <Body>{description}</Body>
@@ -100,15 +98,11 @@ export function ItemCard({
             Comprar
           </Button>
         ) : (
-          <Button
-            className={"card-item-price"}
-            backgroundColor="blue"
-            onClick={handleBuyClick}
-          >
+          <Button className={"card-item-price"} backgroundColor="blue">
             Comprar
           </Button>
         )}
-      </InfoContainer>
+      </InfoContainerForm>
     </ItemCardContainer>
   );
 }

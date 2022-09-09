@@ -1,11 +1,13 @@
-import { Header } from "components/header"
-import { Footer } from "components/footer"
-import { Root } from "./styled"
+import { Footer } from "components/footer";
+import { Header } from "components/header";
+import { Root } from "./styled";
 
-export function Layout({children}: any) {
-    return <Root>
-        <Header/>
-            {children}
-        <Footer/>
+export function Layout({ children }: any) {
+  return (
+    <Root>
+      <Header />
+      {children}
+      <Footer />
     </Root>
+  );
 }

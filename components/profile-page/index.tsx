@@ -1,18 +1,32 @@
 import { useMe } from "lib/hooks";
+import { useRouter } from "next/router";
+import { Button } from "ui/buttons";
 import { Subtitle } from "ui/typography";
-import { ProfileContainer, ProfileContent } from "./styled";
-import { ProfileForm } from "./styled";
+import { ProfileContainer, ProfileContent, ProfileForm } from "./styled";
 
 export function ProfilePage() {
-  const userData = useMe()
-  
+  const userData = useMe();
+  const router = useRouter();
+
+  function handleOrdersButton() {
+    router.push("/orders");
+  }
+
   return (
     <ProfileContainer>
       <ProfileContent>
+        <Button
+          className="profile-orders-button"
+          onClick={handleOrdersButton}
+          backgroundColor="yellow"
+        >
+          Ver mis ordenes
+        </Button>
+        <div>
           <Subtitle className="profile-title">Perfil</Subtitle>
-          <ProfileForm userData={userData}/>
-      </ProfileContent> 
+          <ProfileForm userData={userData} />
+        </div>
+      </ProfileContent>
     </ProfileContainer>
   );
 }
-  

@@ -1,10 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const ThanksContainer = styled.section`
-    min-height: 35vh;
-    padding: 50px 5px;
-`
-export const ThanksContent = styled.div`
-    max-width: fit-content;
-    margin: 0 auto;
-`
+export const OrdersContainer = styled.section`
+  min-height: 35vh;
+  padding: 50px 5px;
+`;
+export const OrdersContent = styled.div`
+  max-width: fit-content;
+  margin: 0 auto;
+`;

@@ -1,21 +1,23 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { Body, LargeText } from "ui/typography";
 import {
-    PriceInformation, ProductCardContainer,
-    ProductInfoContainer,
-    ProductInformation
+  PriceInformation,
+  ProductCardContainer,
+  ProductInfoContainer,
+  ProductInformation,
 } from "./styled";
-import {useRouter} from "next/router"
 
-export const ProductCard = ({ title, price, imgUrl, objectID }: any) => {
-  const router = useRouter()
-  
+export const ProductCard = ({ title, price, imgUrl, objectID, stock }: any) => {
+  const router = useRouter();
+  const disable = stock == 0 ? true : false;
+
   function handleItemClick() {
-    router.push("/item/" + objectID)
+    router.push("/item/" + objectID);
   }
 
   return (
-    <ProductCardContainer onClick={handleItemClick}>
+    <ProductCardContainer disable={disable} onClick={handleItemClick}>
       <Image
         src={imgUrl}
         layout="responsive"
@@ -26,7 +28,9 @@ export const ProductCard = ({ title, price, imgUrl, objectID }: any) => {
       />
       <ProductInfoContainer>
         <ProductInformation>
-          <LargeText bold>{title}</LargeText>
+          <LargeText bold>
+            {disable ? <LargeText>Sin stock</LargeText> : title}
+          </LargeText>
           <Body>{title}</Body>
         </ProductInformation>
         <PriceInformation>

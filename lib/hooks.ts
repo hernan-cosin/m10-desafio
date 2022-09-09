@@ -1,7 +1,6 @@
-import useSWRImmutable from "swr/immutable";
-import useSWRI from "swr";
 import { fetchAPI } from "lib/api";
 import { useEffect, useState } from "react";
+import useSWRI from "swr";
 
 export function useMe() {
   const [loggedIn, setLoggedIn] = useState("");
@@ -35,14 +34,15 @@ export function useFeaturedProducts() {
     return data;
   }
 }
-export function useSearchProduct(routerQuery:any) {
-  console.log(routerQuery);
-  const q = routerQuery.q
-  const page = routerQuery.page? "&page=" + routerQuery.page : ""
-  const hitsPerPage = routerQuery.hitsPerPage? "&hitsPerPage=" + routerQuery.hitsPerPage : ""
+export function useSearchProduct(routerQuery: any) {
+  const q = routerQuery.q;
+  const page = routerQuery.page ? "&page=" + routerQuery.page : "";
+  const hitsPerPage = routerQuery.hitsPerPage
+    ? "&hitsPerPage=" + routerQuery.hitsPerPage
+    : "";
 
   const { data, error } = useSWRI(
-    "/search?q=" + q + page + hitsPerPage,
+    q ? "/search?q=" + q + page + hitsPerPage : null,
     fetchAPI,
     {
       revalidateIfStale: true,
@@ -50,6 +50,19 @@ export function useSearchProduct(routerQuery:any) {
       revalidateOnReconnect: false,
     }
   );
+  if (error) {
+    throw { message: "hay un error", error: error };
+  } else {
+    return data;
+  }
+}
+
+export function useMyOrders() {
+  const { data, error } = useSWRI("/me/orders", fetchAPI, {
+    revalidateIfStale: true,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
   if (error) {
     throw { message: "hay un error", error: error };
   } else {

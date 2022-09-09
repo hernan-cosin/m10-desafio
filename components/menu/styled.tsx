@@ -1,6 +1,5 @@
-
-import { Li, Nav, Ul } from "ui/tags";
-import styled from "styled-components"
+import styled from "styled-components";
+import { Nav, Ul } from "ui/tags";
 
 export const MenuCloseContainer = styled(Nav)`
   @media (max-width: 599px) {
@@ -24,26 +23,26 @@ export const MenuCloseContainer = styled(Nav)`
 `;
 
 export const MenuUl = styled(Ul)`
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 70px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 70px;
 `;
 
 export const UserDataContainerOpen = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-Items: center;
-    
-    @media (max-width: 599px) {
-        display: none;
-    }
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 599px) {
+    display: none;
+  }
+`;
 
 export const UserDataContainerClose = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-Items: center;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

@@ -1,12 +1,12 @@
 import { getToken, sendCode } from "lib/api";
+import { redirectTo } from "lib/atoms";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
 import { Button } from "ui/buttons";
 import { TextField } from "ui/textfield";
 import { Body } from "ui/typography";
 import { SigninFormContainer } from "./styled";
-import { useRecoilValue } from "recoil";
-import { redirectTo } from "lib/atoms";
 
 export const Form = () => {
   const router = useRouter();
