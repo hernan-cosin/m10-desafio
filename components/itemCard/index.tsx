@@ -16,6 +16,7 @@ import {
   ItemCardContainer,
   Select,
 } from "./styled";
+import { Label } from "ui/textfield/styled";
 
 export function ItemCard({
   imgUrl,
@@ -83,21 +84,24 @@ export function ItemCard({
       </ImageContainer>
       <InfoContainerForm onSubmit={handleSubmit}>
         <Subtitle>{title}</Subtitle>
-        <LargeText>Cantidad: {quantity}</LargeText>
-        <Body>{description}</Body>
-        <select
-          name="amount"
-          id="amount"
-          onChange={handleChange}
-          style={{ display: "block", maxWidth: "50px", margin: "10px 0 0 0" }}
-        >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
+        <LargeText>Unidades: {quantity}</LargeText>
+        <Body>Categoria: {description}</Body> 
+        <div>
+          <Label as="label">Cantidad</Label>
+          <select
+            name="amount"
+            id="amount"
+            onChange={handleChange}
+            style={{ display: "inline-block", maxWidth: "50px", margin: "10px 0 0 10px", width: "100%", }}
+          > 
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
         <Title className="card-item-price">${price * amount}</Title>
         <Select quantity={quantity} options={flavors} />
         {toggleDisableButton ? (
