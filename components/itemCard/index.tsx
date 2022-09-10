@@ -1,5 +1,9 @@
 import { generateOrder, getSavedToken } from "lib/api";
-import { flavorsSelected, redirectTo, buyingProductInformation } from "lib/atoms";
+import {
+  flavorsSelected,
+  redirectTo,
+  buyingProductInformation,
+} from "lib/atoms";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -22,14 +26,18 @@ export function ItemCard({
   flavors,
   objectID,
 }: any) {
+  const router = useRouter();
   const flavorsSelectedVal = useRecoilValue(flavorsSelected);
   const [toggleDisableButton, setToggleDisableButton] = useState(false);
   const [amount, setAmount] = useState(1);
-  const router = useRouter();
   const setRedirectTo = useSetRecoilState(redirectTo);
-  const setBuyingProductInformation = useSetRecoilState(buyingProductInformation)
+  const setBuyingProductInformation = useSetRecoilState(
+    buyingProductInformation
+  );
+  
   useEffect(() => {
     if (flavorsSelectedVal.length == 0) {
+      // si no hay ningun sabor seleccionado el botón comprar se deshabilita
       setToggleDisableButton(true);
     } else {
       setToggleDisableButton(false);
@@ -41,18 +49,23 @@ export function ItemCard({
     const inSession = getSavedToken();
 
     if (inSession) {
+      // si está logeado se inicia el proceso de compra
       setBuyingProductInformation({
         amount: amount.toString(),
-        flavor: flavorsSelectedVal
-      })
-      router.push("/checkout/" + objectID)
+        flavor: flavorsSelectedVal,
+      });
+      router.push("/checkout/" + objectID);
     } else {
-      setRedirectTo({ asPath: router.asPath }); // sets global state to redirect to same page after login
+      // si no está logeado se redirige al usuario a iniciar sesión
+      // para luego volver a dirigirlo al producto que estaba intentando comprar
+      setRedirectTo({ asPath: router.asPath });
       router.push("/signin");
     }
   }
 
   const handleChange = (event: any) => {
+    // escucha el evento de cantidad de productos seleccionados
+    // se modifica el valor del producto en base a esto
     setAmount(event.target.value);
   };
 

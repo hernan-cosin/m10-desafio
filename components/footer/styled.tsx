@@ -24,3 +24,26 @@ export const FooterContent = styled.div`
     margin: 0 auto;
   }
 `;
+
+export const FooterMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin: 10px 0 0 0;
+`;
+
+export const FooterSocial = styled.div`
+  margin: 10px 0 0 0;
+
+  @media (min-width: 600px) {
+    justify-self: flex-end;
+  }
+`;
+
+export const SocialContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+`;
+

@@ -1,30 +1,13 @@
 import Link from "next/link";
-import styled from "styled-components";
 import { Instagram } from "ui/icons";
 import { Body, LargeText } from "ui/typography";
-import { FooterContainer, FooterContent } from "./styled";
-
-const FooterMenu = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-  margin: 10px 0 0 0;
-`;
-
-const FooterSocial = styled.div`
-  margin: 10px 0 0 0;
-
-  @media (min-width: 600px) {
-    justify-self: flex-end;
-  }
-`;
-
-const SocialContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  column-gap: 10px;
-`;
+import {
+  FooterContainer,
+  FooterContent,
+  FooterMenu,
+  FooterSocial,
+  SocialContainer
+} from "./styled";
 
 export function Footer() {
   return (

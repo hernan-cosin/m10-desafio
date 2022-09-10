@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { Button } from "ui/buttons";
-import { Input } from "ui/textfield";
+import { Input } from "ui/textfield/styled";
 
 export const HeaderContainer = styled.section`
   margin: 0 auto;

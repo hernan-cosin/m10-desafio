@@ -18,7 +18,7 @@ export function Header() {
     router.push("/");
   }
 
-  const [home, setHome] = useState(false);
+  const [home, setHome] = useState(false); // condicional para no mostrar la barra buscadora en la home page
 
   useEffect(() => {
     router.pathname == "/" ? setHome(true) : setHome(false);

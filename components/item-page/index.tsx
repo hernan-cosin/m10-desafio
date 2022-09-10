@@ -28,7 +28,10 @@ export function ItemPage({ itemInfo }: any) {
   );
 }
 
+// función auxiliar
 function getFlavors(itemInfo: any) {
+  // obtiene los sabores dependiendo la categoria del producto
+  // porque vienen de dos tablas distintas de airtable
   if (itemInfo?.Category == "milanesa") {
     const flavors = itemInfo["Flavor milanesas (from Flavor)"];
     return flavors;

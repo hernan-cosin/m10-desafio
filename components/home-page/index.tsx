@@ -2,7 +2,7 @@ import { ProductCard } from "components/productCard";
 import { useFeaturedProducts } from "lib/hooks";
 import { useRouter } from "next/router";
 import { Button } from "ui/buttons";
-import { Input } from "ui/textfield";
+import { Input } from "ui/textfield/styled";
 import { Title } from "ui/typography";
 import {
   FeaturedContainer,
