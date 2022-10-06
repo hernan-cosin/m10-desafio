@@ -2,6 +2,8 @@ import { updateUserInfo } from "lib/api";
 import styled from "styled-components";
 import { Button } from "ui/buttons";
 import { TextField } from "ui/textfield";
+import { Modal } from "components/modal";
+import { useState } from "react";
 
 export const ProfileContainer = styled.section`
   min-height: 35vh;
@@ -28,6 +30,9 @@ export const ProfileFormContainer = styled.form`
 `;
 
 export const ProfileForm = ({ userData }: any) => {
+  const [updateRes, setUpdateRes] = useState({updated:false});
+  const [submited, setSubmited] = useState(false);
+
   async function handleSubmit(e: any) {
     e.preventDefault();
     const { name } = e.target;
@@ -47,10 +52,19 @@ export const ProfileForm = ({ userData }: any) => {
     };
 
     const res = await updateUserInfo(data);
+    setUpdateRes(res);
+    setSubmited(true)
+    setTimeout(()=>{
+      setSubmited(false)
+    }, 10000)
   }
 
   return (
     <ProfileFormContainer onSubmit={handleSubmit}>
+      {
+        submited? <Modal res={updateRes} /> : 
+        null
+      }
       <TextField
         label="Nombre"
         name="name"
